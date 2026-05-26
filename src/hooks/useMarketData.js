@@ -2,9 +2,16 @@ import { useEffect, useState } from "react";
 
 import { fetchMarketData } from "../api/albionApi";
 
+import useMarketStore from "../store/marketStore";
+
 export default function useMarketData() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] =
+    useState(true);
+
+  const {
+    marketData,
+    setMarketData,
+  } = useMarketStore();
 
   async function loadData() {
     setLoading(true);
@@ -14,15 +21,18 @@ export default function useMarketData() {
         "T4_BAG",
         "T5_MAIN_SWORD",
         "T4_CAPE",
+        "T4_ARMOR_LEATHER_SET1",
       ],
       [
         "Bridgewatch",
         "Caerleon",
         "Martlock",
+        "Lymhurst",
       ]
     );
 
-    setData(result);
+    setMarketData(result);
+
     setLoading(false);
   }
 
@@ -37,7 +47,7 @@ export default function useMarketData() {
   }, []);
 
   return {
-    data,
+    data: marketData,
     loading,
   };
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import DashboardLayout from "../components/layouts/DashboardLayout";
 
+import RealtimeStats from "../components/layouts/RealtimeStats";
 import FlippingTable from "../components/layouts/FlippingTable";
 import SummaryCard from "../dashboard/SumarryCard";
 import MarketTable from "../dashboard/MarketTable";
@@ -21,7 +22,7 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <SummaryCard
+        <SummaryCard  
           title="Total Profit"
           value="$12,450"
           profit="12"
@@ -40,9 +41,12 @@ export default function Dashboard() {
         />
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6">
-        <MarketChart />
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-6">
+        <div className="xl:col-span-2">
+          <MarketChart />
+        </div>
         <MarketTable />
+        <RealtimeStats />
         <FlippingTable />
       </div>
     </DashboardLayout>
