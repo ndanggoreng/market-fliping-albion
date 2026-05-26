@@ -1,12 +1,25 @@
+import { useState } from "react";
+
 import DashboardLayout from "../components/layouts/DashboardLayout";
 
+import FlippingTable from "../components/layouts/FlippingTable";
 import SummaryCard from "../dashboard/SumarryCard";
 import MarketTable from "../dashboard/MarketTable";
 import MarketChart from "../dashboard/MarketChart";
+import SearchBar from "../components/layouts/SearchBar";
 
 export default function Dashboard() {
+  const [search, setSearch] = useState("");
+
   return (
     <DashboardLayout>
+      <div className="mb-6">
+        <SearchBar
+          search={search}
+          setSearch={setSearch}
+        />
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <SummaryCard
           title="Total Profit"
@@ -30,6 +43,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6">
         <MarketChart />
         <MarketTable />
+        <FlippingTable />
       </div>
     </DashboardLayout>
   );
