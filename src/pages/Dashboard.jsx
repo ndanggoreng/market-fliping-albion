@@ -8,6 +8,7 @@ import SummaryCard from "../dashboard/SumarryCard";
 import MarketTable from "../dashboard/MarketTable";
 import MarketChart from "../dashboard/MarketChart";
 import SearchBar from "../components/layouts/SearchBar";
+import FilterPanel from "../components/layouts/FilterPanel";
 
 export default function Dashboard() {
   const [search, setSearch] = useState("");
@@ -48,6 +49,7 @@ export default function Dashboard() {
         <MarketTable />
         <RealtimeStats />
         <FlippingTable />
+        <FilterPanel />
       </div>
     </DashboardLayout>
   );

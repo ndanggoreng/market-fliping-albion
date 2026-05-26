@@ -1,5 +1,5 @@
 import useMarketData from "../../hooks/useMarketData";
-
+import useFilterStore from "../../store/filterStore";
 import { calculateFlipping } from "../../utils/filpping";   
 
 export default function FlippingTable() {
@@ -21,19 +21,12 @@ export default function FlippingTable() {
     );
   }
 
+  const filters = useFilterStore();
   const opportunities =
-    calculateFlipping(data);
+    calculateFlipping(data, filters);
 
   return (
-    <div
-      className="
-        bg-gray-900
-        border border-gray-800
-        rounded-2xl
-        p-5
-        overflow-auto
-      "
-    >
+    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5 overflow-auto">
       <div
         className="
           flex
